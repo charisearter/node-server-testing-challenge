@@ -12,7 +12,7 @@ server.get("/", (req, res) => {
 
 server.get("/projects", (req, res) => {
     Projects.getAll()
-        .then(hobbits => {
+        .then(projects => {
             res.status(200).json(projects);
         })
         .catch(error => {
@@ -20,7 +20,11 @@ server.get("/projects", (req, res) => {
         });
 });
 
-// server.post('/hobbits', (req, res) => {
+// server.post('/projects', (req, res) => {
+//   //
+// })
+
+// server.delete('/projects', (req, res) => {
 //   //
 // })
 
