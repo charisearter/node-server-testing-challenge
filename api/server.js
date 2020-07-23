@@ -1,6 +1,6 @@
 const express = require("express");
 
-const Hobbits = require("../projects/projectsModel.js");
+const Projects = require("../projects/projectsModel.js");
 
 const server = express();
 
@@ -10,10 +10,10 @@ server.get("/", (req, res) => {
     res.status(200).json({ api: "up" });
 });
 
-server.get("/hobbits", (req, res) => {
-    Hobbits.getAll()
+server.get("/projects", (req, res) => {
+    Projects.getAll()
         .then(hobbits => {
-            res.status(200).json(hobbits);
+            res.status(200).json(projects);
         })
         .catch(error => {
             res.status(500).json(error);
