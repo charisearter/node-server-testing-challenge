@@ -20,12 +20,26 @@ server.get("/projects", (req, res) => {
         });
 });
 
-// server.post('/projects', (req, res) => {
-//   //
-// })
+server.post('/projects', (req, res) => {
+  Projects.insert(req.body)
+  .then(projects => {
+    res.status(201).json(projects);
+  })
+  .catch(error => {
+    res.status(500).json(error)
+  })
+})
 
-// server.delete('/projects', (req, res) => {
-//   //
-// })
+//put would look the same but needs a req.body
+server.delete('/projects/:id', (req, res) => {
+  const { id } = req.params
+  Projects.del(id)
+  .then(projects => {
+    res.status(204).json(projects);
+  })
+  .catch(error => {
+    res.status(500).json(error)
+  })
+})
 
 module.exports = server;
